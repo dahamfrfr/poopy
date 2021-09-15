@@ -32,7 +32,8 @@ class StoryMenuState extends MusicBeatState
 		true,	//Week 3
 		true,	//Week 4
 		true,	//Week 5
-		true	//Week 6
+		true,	//Week 6
+		true
 	];
 
 	//It works like this:
@@ -44,7 +45,8 @@ class StoryMenuState extends MusicBeatState
 		['pico', 'bf', 'gf'],
 		['mom', 'bf', 'gf'],
 		['parents-christmas', 'bf', 'gf'],
-		['senpai', 'bf', 'gf']
+		['senpai', 'bf', 'gf'],
+		['poop', 'bf', 'gf']
 	];
 
 	//The week's name, displayed on top-right
@@ -55,20 +57,22 @@ class StoryMenuState extends MusicBeatState
 		"PICO",
 		"MOMMY MUST MURDER",
 		"RED SNOW",
-		"hating simulator ft. moawling"
+		"hating simulator ft. moawling",
+		"number 2"
 	];
 
 	//Background asset name, the background files are stored on assets/preload/menubackgrounds/
 	var weekBackground:Array<String> = [
-		'stage',		
+		'stage',
 		'stage',
 		'halloween',
 		'philly',
 		'limo',
 		'christmas',
-		'school'
+		'school',
+		"bathroom"
 	];
-	
+
 	var scoreText:FlxText;
 
 	private static var curDifficulty:Int = 1;
@@ -176,7 +180,7 @@ class StoryMenuState extends MusicBeatState
 		sprDifficultyGroup = new FlxTypedGroup<FlxSprite>();
 		add(sprDifficultyGroup);
 
-		
+
 		for (i in 0...CoolUtil.difficultyStuff.length) {
 			var sprDifficulty:FlxSprite = new FlxSprite(leftArrow.x + 60, leftArrow.y).loadGraphic(Paths.image('menudifficulties/' + CoolUtil.difficultyStuff[i][0].toLowerCase()));
 			sprDifficulty.x += (308 - sprDifficulty.width) / 2;

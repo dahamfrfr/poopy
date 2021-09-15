@@ -63,7 +63,7 @@ class PlayState extends MusicBeatState
 		['Great', 0.9], //From 80% to 89%
 		['Sick!', 1], //From 90% to 99%
 		['Perfect!!', 1] //The value on this one isn't used actually, since Perfect is always "1"
-	]; 
+	];
 
 	//event variables
 	private var isCameraOnForcedPos:Bool = false;
@@ -581,6 +581,14 @@ class PlayState extends MusicBeatState
 					stageCurtains.updateHitbox();
 					add(stageCurtains);
 				}
+			case 'poop' | 'shid' | 'fart':
+				defaultCamZoom = 1.1;
+				curStage = 'bathroom';
+				var bg:BGSprite = new BGSprite('bathroom/Bafroom', 0, 0, 1, 1);
+				bg.setGraphicSize(Std.int(bg.width * 0.8));
+				bg.screenCenter();
+				bg.y += 50;
+				add(bg);
 		}
 
 		backgroundGroup = new FlxTypedGroup<FlxSprite>();
@@ -629,6 +637,8 @@ class PlayState extends MusicBeatState
 				BF_Y += 220;
 				GF_X += 180;
 				GF_Y += 300;
+			case 'bathroom':
+				GF_Y += 80;
 		}
 
 		gf = new Character(GF_X, GF_Y, gfVersion);
@@ -646,7 +656,7 @@ class PlayState extends MusicBeatState
 		boyfriend.x += boyfriend.positionArray[0];
 		boyfriend.y += boyfriend.positionArray[1];
 		boyfriendGroup.add(boyfriend);
-		
+
 		var camPos:FlxPoint = new FlxPoint(gf.getGraphicMidpoint().x, gf.getGraphicMidpoint().y);
 		camPos.x += gf.cameraPosition[0];
 		camPos.y += gf.cameraPosition[1];
@@ -667,10 +677,12 @@ class PlayState extends MusicBeatState
 			case 'limo':
 				resetFastCar();
 				add(fastCar);
-			
+
 			case 'schoolEvil':
 				var evilTrail = new FlxTrail(dad, null, 4, 24, 0.3, 0.069);
 				add(evilTrail);
+			case 'bathroom':
+				gf.visible = false;
 		}
 
 		add(gfGroup);
@@ -855,11 +867,11 @@ class PlayState extends MusicBeatState
 				doPush = true;
 			}
 		}
-		
-		if(doPush) 
+
+		if(doPush)
 			luaArray.push(new FunkinLua(luaFile));
 		#end
-		
+
 		var daSong:String = curSong.toLowerCase();
 		if (isStoryMode && !seenCutscene)
 		{
@@ -937,14 +949,14 @@ class PlayState extends MusicBeatState
 		CoolUtil.precacheSound('missnote1');
 		CoolUtil.precacheSound('missnote2');
 		CoolUtil.precacheSound('missnote3');
-		
+
 		#if desktop
 		// Updating Discord Rich Presence.
 		DiscordClient.changePresence(detailsText, displaySongName + " (" + storyDifficultyText + ")", iconP2.getCharacter());
 		#end
 		super.create();
 	}
-	
+
 	public function reloadHealthBarColors() {
 		healthBar.createFilledBar(FlxColor.fromRGB(dad.healthColorArray[0], dad.healthColorArray[1], dad.healthColorArray[2]),
 			FlxColor.fromRGB(boyfriend.healthColorArray[0], boyfriend.healthColorArray[1], boyfriend.healthColorArray[2]));
@@ -1170,7 +1182,7 @@ class PlayState extends MusicBeatState
 					case 'mall':
 						if(!ClientPrefs.lowQuality)
 							upperBoppers.dance(true);
-		
+
 						bottomBoppers.dance(true);
 						santa.dance(true);
 				}
@@ -1666,7 +1678,7 @@ class PlayState extends MusicBeatState
 
 		super.onFocus();
 	}
-	
+
 	override public function onFocusLost():Void
 	{
 		#if desktop
@@ -1869,7 +1881,7 @@ class PlayState extends MusicBeatState
 					}
 					openSubState(new PauseSubState(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y));
 				}
-			
+
 				#if desktop
 				DiscordClient.changePresence(detailsPausedText, displaySongName + " (" + storyDifficultyText + ")", iconP2.getCharacter());
 				#end
@@ -2015,7 +2027,7 @@ class PlayState extends MusicBeatState
 				openSubState(new GameOverSubstate(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y, camFollowPos.x, camFollowPos.y));
 
 				// MusicBeatState.switchState(new GameOverState(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y));
-				
+
 				#if desktop
 				// Game Over doesn't get his own variable because it's only used here
 				DiscordClient.changePresence("Game Over - " + detailsText, displaySongName + " (" + storyDifficultyText + ")", iconP2.getCharacter());
@@ -2079,7 +2091,7 @@ class PlayState extends MusicBeatState
 							if(curStage == 'school' || curStage == 'schoolEvil') {
 								daNote.y += 8;
 							}
-						} 
+						}
 						daNote.y += (Note.swagWidth / 2) - (60.5 * (roundedSpeed - 1));
 						daNote.y += 27.5 * ((SONG.bpm / 100) - 1) * (roundedSpeed - 1);
 
@@ -2265,7 +2277,7 @@ class PlayState extends MusicBeatState
 		}
 
 		//super.update(elapsed); //TEST
-		
+
 		#if debug
 		if(!endingSong && !startingSong) {
 			if (FlxG.keys.justPressed.ONE)
@@ -2601,7 +2613,7 @@ class PlayState extends MusicBeatState
 			camFollow.set(dad.getMidpoint().x + 150, dad.getMidpoint().y - 100);
 			camFollow.x += dad.cameraPosition[0];
 			camFollow.y += dad.cameraPosition[1];
-			
+
 			if (dad.curCharacter.startsWith('mom'))
 				vocals.volume = 1;
 
@@ -2804,7 +2816,7 @@ class PlayState extends MusicBeatState
 
 	private function popUpScore(note:Note = null):Void
 	{
-		var noteDiff:Float = Math.abs(note.strumTime - Conductor.songPosition + 8); 
+		var noteDiff:Float = Math.abs(note.strumTime - Conductor.songPosition + 8);
 
 		// boyfriend.playAnim('hey');
 		vocals.volume = 1;
@@ -2953,7 +2965,7 @@ class PlayState extends MusicBeatState
 
 			daLoop++;
 		}
-		/* 
+		/*
 			trace(combo);
 			trace(seperatedScore);
 		 */
@@ -3174,7 +3186,7 @@ class PlayState extends MusicBeatState
 								spawnNoteSplashOnNote(note);
 							}
 							else health -= 0.06; //0.06 + 0.04 = -0.1 (-5%) of HP if you hit a hurt sustain note
-	
+
 							if(boyfriend.animation.getByName('hurt') != null) {
 								boyfriend.playAnim('hurt', true);
 								boyfriend.specialAnim = true;

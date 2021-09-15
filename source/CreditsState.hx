@@ -24,12 +24,18 @@ class CreditsState extends MusicBeatState
 	private var iconArray:Array<AttachedSprite> = [];
 
 	private static var creditsStuff:Array<Dynamic> = [ //Name - Icon name - Description - Link - BG Color
+		['Vs Poop Team'],
+		['ImBurger',		'burger',		'All art and animations, Creator',		'https://twitter.com/MBorgor',	0xFF2E46C7],
+		['HugeNate',		'HugeNate',		'Charting, Director, Dumb logo art',		'https://twitter.com/HugeNate_',	0xFF19FCD4],
+		['MindOfTheEye',		'iconic',		'Music',		'https://twitter.com/MindoftheEye1',	0xFFDADADA],
+		['Munky',		'munky',		'Coding',		'https://munkyfr.github.io',	0xFFFF9048],
 		['Psych Engine Team'],
 		['Shadow Mario',		'shadowmario',		'Main Programmer of Psych Engine',					'https://twitter.com/Shadow_Mario_',	0xFFFFDD33],
 		['RiverOaken',			'riveroaken',		'Main Artist/Animator of Psych Engine',				'https://twitter.com/river_oaken',		0xFFC30085],
 		[''],
 		['Special Thanks'],
 		['Keoiki',				'keoiki',			'Note Splash Animations',							'https://twitter.com/Keoiki_',			0xFFFFFFFF],
+		['Curse of Tales',		'curse',		'Menu BG Colors (POOP)',		'',	0xFFF45431],
 		[''],
 		["Funkin' Crew"],
 		['ninjamuffin99',		'ninjamuffin99',	"Programmer of Friday Night Funkin'",				'https://twitter.com/ninja_muffin99',	0xFFF73838],
@@ -74,7 +80,7 @@ class CreditsState extends MusicBeatState
 				var icon:AttachedSprite = new AttachedSprite('credits/' + creditsStuff[i][1]);
 				icon.xAdd = optionText.width + 10;
 				icon.sprTracker = optionText;
-	
+
 				// using a FlxGroup is too much fuss!
 				iconArray.push(icon);
 				add(icon);
