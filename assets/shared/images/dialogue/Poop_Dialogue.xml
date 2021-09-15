@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="Poop_Dialogue.png">
+	<!-- Created with Adobe Animate version 21.0.7.42652 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="POOP talk0000" x="765" y="18" width="202" height="190" frameX="-17" frameY="0" frameWidth="235" frameHeight="190"/>
+	<SubTexture name="POOP talk loop0000" x="18" y="18" width="235" height="169" frameX="0" frameY="-19" frameWidth="235" frameHeight="190"/>
+	<SubTexture name="POOP talk loop0001" x="18" y="18" width="235" height="169" frameX="0" frameY="-19" frameWidth="235" frameHeight="190"/>
+	<SubTexture name="POOP talk loop0002" x="281" y="18" width="217" height="179" frameX="-9" frameY="-10" frameWidth="235" frameHeight="190"/>
+	<SubTexture name="POOP talk loop0003" x="281" y="18" width="217" height="179" frameX="-9" frameY="-10" frameWidth="235" frameHeight="190"/>
+	<SubTexture name="POOP talk loop0004" x="526" y="18" width="211" height="188" frameX="-12" frameY="-2" frameWidth="235" frameHeight="190"/>
+	<SubTexture name="POOP talk loop0005" x="526" y="18" width="211" height="188" frameX="-12" frameY="-2" frameWidth="235" frameHeight="190"/>
+	<SubTexture name="POOP talk loop0006" x="765" y="18" width="202" height="190" frameX="-17" frameY="0" frameWidth="235" frameHeight="190"/>
+	<SubTexture name="POOP talk loop0007" x="765" y="18" width="202" height="190" frameX="-17" frameY="0" frameWidth="235" frameHeight="190"/>
+</TextureAtlas>

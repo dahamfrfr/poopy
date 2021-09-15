@@ -44,6 +44,12 @@ class DialogueBoxPsych extends FlxSpriteGroup
 				char.animation.addByPrefix('talk', 'bftalkloop', 24, true); //During dialogue
 				char.flipX = !char.flipX;
 
+			case 'poop':
+				char.frames = Paths.getSparrowAtlas('dialogue/Poop_Dialogue');
+				char.animation.addByPrefix('talkIdle', 'POOP talk', 24, true); //Dialogue ended
+				char.animation.addByPrefix('talk', 'POOP talk loop', 24, true); //During dialogue
+				char.screenCenter(Y);
+
 			case 'psychic':
 				char.frames = Paths.getSparrowAtlas('dialogue/Psy_Dialogue'); //oppa gangnam style xddddd kill me
 				char.animation.addByPrefix('talkIdle', 'PSYtalk', 24, true);
@@ -67,7 +73,7 @@ class DialogueBoxPsych extends FlxSpriteGroup
 			FlxG.sound.playMusic(Paths.music(song), 0);
 			FlxG.sound.music.fadeIn(2, 0, 1);
 		}
-		
+
 		bgFade = new FlxSprite(-500, -500).makeGraphic(FlxG.width * 2, FlxG.height * 2, FlxColor.WHITE);
 		bgFade.scrollFactor.set();
 		bgFade.visible = true;
@@ -111,6 +117,12 @@ class DialogueBoxPsych extends FlxSpriteGroup
 
 			char.setGraphicSize(Std.int(char.width * 0.7));
 			char.updateHitbox();
+			if (splitName[0] == 'poop') { // manual adjustment bc im dumb
+				char.setGraphicSize(Std.int(char.width * 1.8));
+				char.updateHitbox();
+				char.x += 375;
+				char.y -= 35;
+			}
 			char.antialiasing = ClientPrefs.globalAntialiasing;
 			char.scrollFactor.set();
 			char.alpha = 0;
@@ -339,7 +351,7 @@ class DialogueBoxPsych extends FlxSpriteGroup
 		} else {
 			box.offset.set(10, 0);
 		}
-		
+
 		if(!box.flipX) box.offset.y += 10;
 	}
 }

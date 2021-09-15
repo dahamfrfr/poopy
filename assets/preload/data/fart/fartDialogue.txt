@@ -1,2 +1,3 @@
-:bf:you stink
-:dad:sad fart
+poop:left bf:right
+:1:talk:0.05:normal:you stink
+:0:talk:0.05:normal:sad fart

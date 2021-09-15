@@ -1,2 +1,3 @@
-:bf:nice rap, poop
-:dad:prprppbrptrprbrptrp
+poop:left bf:right
+:1:talk:0.05:normal:nice rap, poop
+:0:talk:0.05:normal:prprppbrptrprbrptrp

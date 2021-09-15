@@ -1,5 +1,6 @@
-:bf:fattest shit of 2021
-:dad:fart
-:bf:wtf
-:dad:rap
-:bf:bruh what the hell boi
+poop:left bf:right
+:1:talk:0.05:normal:fattest shit of 2021
+:0:talk:0.05:normal:poop:fart
+:1:talk:0.05:normal:wtf
+:0:talk:0.05:normal:rap
+:1:talk:0.05:normal:bruh what the hell boi
